@@ -25,7 +25,6 @@ int execute_command(char **args, int cmd_num)
 
 	if (child_pid == 0) /* Child process */
 	{
-		printf("Executing command: %s\n", args[0]);
 		/* Execute the command */
 		if (execve(args[0], args, NULL) == -1)
 		{
@@ -37,7 +36,6 @@ int execute_command(char **args, int cmd_num)
 	else /* Parent process */
 	{
 		wait(&status); /* Wait for the child process to complete */
-		printf("Command finished with status: %d\n", status);
 	}
 
 	return (0); /* Indicate success */
